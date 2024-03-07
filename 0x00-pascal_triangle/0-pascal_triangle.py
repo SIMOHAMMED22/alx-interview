@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""0. Pascal's Triangle"""
 
 def pascal_triangle(n):
     """
@@ -22,8 +23,3 @@ def pascal_triangle(n):
         triangle.append(row)
 
     return triangle
-
-
-# Test the function
-n = 5
-print(pascal_triangle(n))
