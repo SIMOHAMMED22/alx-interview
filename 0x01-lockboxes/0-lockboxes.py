@@ -8,17 +8,22 @@ def canUnlockAll(boxes):
                                   contains the indices of the boxes that can be
                                   unlocked using the key for the given box.
     """
-    if not boxes:
-        return False
 
-    n = len(boxes)
-    keys = set([0])
-    unlocked = set()
+    box_set = set(boxes[0])
 
-    while keys:
+    i = 0
+    while i < len(boxes[0]):
+        n = boxes[0][i]
+        if n < len(boxes):
+            box_set.update(boxes[n])
+        i += 1
 
-        box = keys.pop()
-        unlocked.add(box)
-        keys.update(set(boxes[box]) - unlocked)
+    j = 1
+    while j < len(boxes):
+        if j in box_set:
+            box_set.update(boxes[j])
+        else:
+            return False
+        j += 1
 
-    return len(unlocked) == n
+    return True
