@@ -1,16 +1,18 @@
 #!/usr/bin/python3
+""" The main code."""
 
 
 def canUnlockAll(boxes):
     """
-    Returns True if all boxes can be unlocked, False otherwise.
+    Check if all boxes can be unlocked.
 
     Parameters:
-    boxes (list of lists of int): The graph of lock boxes, where each sublist
-                                  contains the indices of the boxes that can be
-                                  unlocked using the key for the given box.
-    """
+    boxes (list of lists): A list of lists where
+    each sublist represents the keys in a box.
 
+    Returns:
+    True if all unlocked, False otherwise.
+    """
     box_set = set(boxes[0])
 
     i = 0
