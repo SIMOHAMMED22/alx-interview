@@ -13,13 +13,18 @@ def minOperations(n):
     Returns:
         int: The minimum number of operations needed to transform `n` into 1.
     """
-    if n == 1:
+    if n <= 1:
         return 0
-    dp = [float('inf')] * (n + 1)
-    dp[1] = 0
-    for i in range(2, n + 1):
-        for j in range(1, i):
-            if i % j == 0:
-                dp[i] = min(dp[i], dp[j] + i // j)
 
-    return dp[n] if dp[n] != float('inf') else 0
+    min_operations = 0
+    current_length = 1
+    clipboard = 0
+
+    while current_length != n:
+        if n % current_length == 0:
+            clipboard = current_length
+            min_operations += 1
+        current_length += clipboard
+        min_operations += 1
+
+    return min_operations
