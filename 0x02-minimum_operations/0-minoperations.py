@@ -10,11 +10,18 @@ def minOperations(n):
     Returns:
         int: The minimum number of operations needed to transform `n` into 1.
     """
-    if n == 1:
+    if n <= 1:
         return 0
 
-    for i in range(2, int(n**0.5) + 1):
-        if n % i == 0:
-            return i + minOperations(n // i)
+    min_operations = 0
+    current_length = 1
+    clipboard = 0
 
-    return n
+    while current_length != n:
+        if n % current_length == 0:
+            clipboard = current_length
+            min_operations += 1
+        current_length += clipboard
+        min_operations += 1
+
+    return min_operations
